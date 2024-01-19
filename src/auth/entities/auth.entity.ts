@@ -1,15 +1,15 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
-export class Order {
+export class Auth {
     @PrimaryGeneratedColumn("uuid")
     id: string
 
     @Column()
-    product: string
+    username: string
 
     @Column()
-    amount: number
+    password: string
 
     @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     created: Date

@@ -2,8 +2,20 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input AuthDto {
+  password: String!
+  username: String!
+}
+
+type AuthModel {
+  id: String!
+  password: String!
+  username: String!
+}
+
 type Mutation {
   saveOrder(dto: OrderDto!): OrderMoel!
+  saveUser(dto: AuthDto!): AuthModel!
 }
 
 input OrderDto {

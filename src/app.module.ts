@@ -5,6 +5,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { APP_PIPE } from '@nestjs/core';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -25,7 +26,8 @@ import { APP_PIPE } from '@nestjs/core';
       synchronize: true, // ในโหมด development จะสร้างตารางใหม่ทุกรอบการรันแอปพลิเคชัน
       logging: true,
     }),
-    OrdersModule
+    OrdersModule,
+    AuthModule
   ],
   providers: [
     {
