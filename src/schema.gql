@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type Mutation {
-  saveOrder(dto: OrderDto!): OrderType!
+  saveOrder(dto: OrderDto!): OrderMoel!
 }
 
 input OrderDto {
@@ -11,12 +11,13 @@ input OrderDto {
   product: String!
 }
 
-type OrderType {
+type OrderMoel {
   amount: Int!
-  id: Int!
+  id: String!
   product: String!
 }
 
 type Query {
-  findAll: [OrderType!]!
+  findAllOrder: [OrderMoel!]!
+  findById(id: String!): OrderMoel!
 }

@@ -1,24 +1,26 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
-import { OrderType } from './type/order.type';
+import { OrderMoel } from './models/order.model';
 import { OrdersService } from './orders.service';
 import { OrderDto } from './dto/order.dto';
+import { Order } from './entities/order.entity';
 
-@Resolver('Order')
+@Resolver('Orders')
 export class OrdersResolver {
     constructor(private readonly ordersService: OrdersService) { }
 
-    @Mutation(() => OrderType)
-    async saveOrder(@Args('dto') dto: OrderDto): Promise<OrderType> {
-        return this.ordersService.saveOrder(dto);
+    @Mutation(() => OrderMoel)
+    async saveOrder(@Args('dto') dto: OrderDto): Promise<Order> {
+        return await this.ordersService.saveOrder(dto);
     }
 
-    @Query(returns => [OrderType]) // ระบุประเภทของ schema ที่เราต้องการ
-    findAll() {
-        return [
-            { id: 1, product: 'Product A', amount: 10 },
-            { id: 2, product: 'Product B', amount: 5 },
-            { id: 3, product: 'Product C', amount: 8 },
-        ];
+    @Query(() => [OrderMoel])
+    async findAllOrder(): Promise<Order[]> {
+        return await this.ordersService.findAll()
+    }
+
+    @Query(() => OrderMoel)
+    async findById(@Args('id') id: string): Promise<Order> {
+        return await this.ordersService.findById(id)
     }
 }
 
