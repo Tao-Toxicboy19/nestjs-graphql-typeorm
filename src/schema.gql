@@ -1,0 +1,13 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type OrderType {
+  amount: Float!
+  id: Float!
+  product: String!
+}
+
+type Query {
+  findAll: [OrderType!]!
+}
