@@ -10,11 +10,10 @@ export class OrdersService {
 
     async saveOrder(dto: OrderDto): Promise<Order> {
         try {
-            console.log(dto)
-            // const order = this.repoOrder.create(dto)
-            return
+            const order = await this.repoOrder.save(dto);
+            return order;
         } catch (error) {
-            throw new Error(error)
+            throw new Error(error);
         }
     }
 }

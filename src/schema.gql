@@ -2,9 +2,18 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Mutation {
+  saveOrder(dto: OrderDto!): OrderType!
+}
+
+input OrderDto {
+  amount: Int!
+  product: String!
+}
+
 type OrderType {
-  amount: Float!
-  id: Float!
+  amount: Int!
+  id: Int!
   product: String!
 }
 

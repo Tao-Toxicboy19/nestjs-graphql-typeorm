@@ -8,6 +8,6 @@ export class Order {
     @Column()
     product: string
 
-    @Column()
+    @Column('numeric')
     amount: number
 }

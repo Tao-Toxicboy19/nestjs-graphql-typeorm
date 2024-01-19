@@ -1,13 +1,13 @@
-import { ObjectType, Field } from '@nestjs/graphql';
+import { ObjectType, Field, Int } from '@nestjs/graphql';
 
 @ObjectType()
 export class OrderType {
-    @Field()
+    @Field(() => Int)
     id: number;
 
-    @Field()
+    @Field(() => String)
     product: string;
 
-    @Field()
+    @Field(() => Int)
     amount: number;
 }

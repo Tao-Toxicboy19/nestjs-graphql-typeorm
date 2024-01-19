@@ -7,10 +7,10 @@ import { OrderDto } from './dto/order.dto';
 export class OrdersResolver {
     constructor(private readonly ordersService: OrdersService) { }
 
-    // @Mutation(() => OrderType)
-    // async saveOrder(@Args('dto') dto: OrderDto): Promise<OrderType> {
-    //     return this.ordersService.saveOrder(dto)
-    // }
+    @Mutation(() => OrderType)
+    async saveOrder(@Args('dto') dto: OrderDto): Promise<OrderType> {
+        return this.ordersService.saveOrder(dto);
+    }
 
     @Query(returns => [OrderType]) // ระบุประเภทของ schema ที่เราต้องการ
     findAll() {
