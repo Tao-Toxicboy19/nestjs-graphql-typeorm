@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, Unique } from 'typeorm';
 
 @Entity()
+@Unique(['username'])
 export class Auth {
     @PrimaryGeneratedColumn("uuid")
     id: string
@@ -10,6 +11,9 @@ export class Auth {
 
     @Column()
     password: string
+
+    @Column()
+    role: string
 
     @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     created: Date

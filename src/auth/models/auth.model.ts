@@ -1,4 +1,4 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { ObjectType, Field } from '@nestjs/graphql';
 
 @ObjectType()
 export class AuthModel {
@@ -10,4 +10,7 @@ export class AuthModel {
 
     @Field(() => String)
     password: string
+
+    @Field(() => String)
+    role: string
 }

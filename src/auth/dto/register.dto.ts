@@ -1,8 +1,8 @@
 import { Field, InputType } from "@nestjs/graphql";
-import { IsNumber, IsString } from "class-validator";
+import { IsString } from "class-validator";
 
 @InputType()
-export class AuthDto {
+export class RegisterDto {
     @Field(() => String)
     @IsString()
     username: string
@@ -10,4 +10,8 @@ export class AuthDto {
     @Field(() => String)
     @IsString()
     password: string
+
+    @Field(() => String)
+    @IsString()
+    role: string
 }
