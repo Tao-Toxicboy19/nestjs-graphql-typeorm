@@ -2,20 +2,22 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-input AuthDto {
+type AuthModel {
+  id: String!
   password: String!
+  role: String!
   username: String!
 }
 
-type AuthModel {
-  id: String!
+input LoginDto {
   password: String!
   username: String!
 }
 
 type Mutation {
+  loginLocal(login: LoginDto!): TokenModel!
+  registerLocal(register: RegisterDto!): AuthModel!
   saveOrder(dto: OrderDto!): OrderMoel!
-  saveUser(dto: AuthDto!): AuthModel!
 }
 
 input OrderDto {
@@ -32,4 +34,14 @@ type OrderMoel {
 type Query {
   findAllOrder: [OrderMoel!]!
   findById(id: String!): OrderMoel!
+}
+
+input RegisterDto {
+  password: String!
+  role: String!
+  username: String!
+}
+
+type TokenModel {
+  accessToken: String!
 }

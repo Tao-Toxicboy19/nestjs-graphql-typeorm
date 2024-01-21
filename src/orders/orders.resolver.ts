@@ -3,8 +3,11 @@ import { OrderMoel } from './models/order.model';
 import { OrdersService } from './orders.service';
 import { OrderDto } from './dto/order.dto';
 import { Order } from './entities/order.entity';
+import { UseGuards } from '@nestjs/common';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Resolver('Orders')
+@UseGuards(AuthGuard)
 export class OrdersResolver {
     constructor(private readonly ordersService: OrdersService) { }
 
