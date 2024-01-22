@@ -13,4 +13,7 @@ export class AuthModel {
 
     @Field(() => String)
     role: string
+
+    @Field(() => String)
+    email: string
 }

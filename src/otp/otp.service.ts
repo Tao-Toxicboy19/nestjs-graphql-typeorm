@@ -1,39 +1,29 @@
+import { MailerService } from '@nestjs-modules/mailer';
 import { Injectable } from '@nestjs/common';
-import * as speakeasy from 'speakeasy';
-
 
 @Injectable()
 export class OtpService {
-    async generateSecret(): Promise<string> {
-        try {
-            const secret = speakeasy.generateSecret({ length: 10 })
-            return secret.base32
-        } catch (error) {
-            throw new Error(error)
-        }
+    constructor(
+        private readonly mailerService: MailerService,
+    ) { }
+
+    async generateOTP(): Promise<string> {
+        const otp = Math.floor(1000 + Math.random() * 9000).toString()
+        return otp
     }
 
-    async generateOTP(secret: string): Promise<string> {
+    async sendOTP(email: string, otp: string): Promise<void> {
         try {
-            const otp = speakeasy.totp({
-                secret,
-                encoding: 'base32'
-            })
-            return otp
+            await this.mailerService.sendMail({
+                to: email,
+                subject: 'OTP Verification',
+                template: './otp.hbs',
+                context: {
+                    otp: otp,
+                },
+            });
         } catch (error) {
-            throw new Error(error)
-        }
-    }
-
-    async verifyOTP(secret: string, otp: string): Promise<boolean> {
-        try {
-            return speakeasy.totp.verify({
-                secret,
-                encoding: 'base32',
-                token: otp
-            })
-        } catch (error) {
-            throw new Error(error)
+            throw new Error(error);
         }
     }
 }

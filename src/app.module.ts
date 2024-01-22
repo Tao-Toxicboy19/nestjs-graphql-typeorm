@@ -18,18 +18,15 @@ import { OtpModule } from './otp/otp.module';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost', // หรือชื่อ service ของคอนเทนเนอร์ Docker ของคุณ
-      port: 5050, // พอร์ตที่คุณกำหนดใน docker-compose.yml
-      username: 'root', // ผู้ใช้ที่คุณกำหนดใน docker-compose.yml
-      password: '12345', // รหัสผ่านที่คุณกำหนดใน docker-compose.yml
-      database: 'auth', // ชื่อฐานข้อมูลที่คุณกำหนดใน docker-compose.yml
+      url: 'postgres://root:12345@localhost:5050/auth', // เปลี่ยนตามการกำหนดค่าของคุณ
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true, // ในโหมด development จะสร้างตารางใหม่ทุกรอบการรันแอปพลิเคชัน
+      synchronize: true,
       logging: true,
     }),
+
     OrdersModule,
     AuthModule,
-    OtpModule
+    OtpModule,
   ],
   providers: [
     {

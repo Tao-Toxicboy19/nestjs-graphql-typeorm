@@ -1,6 +1,5 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { AuthModel } from './models/auth.model';
-import { Auth } from './entities/auth.entity';
 import { AuthService } from './auth.service';
 import { TokenModel } from './models/toke.model';
 import { RegisterDto } from './dto/register.dto';

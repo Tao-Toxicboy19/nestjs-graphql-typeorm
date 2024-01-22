@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateCol
 
 @Entity()
 @Unique(['username'])
-export class Auth {
+export class Users {
     @PrimaryGeneratedColumn("uuid")
     id: string
 
@@ -14,6 +14,12 @@ export class Auth {
 
     @Column()
     role: string
+
+    @Column()
+    email: string
+
+    @Column({ nullable: true })
+    otp: string
 
     @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     created: Date

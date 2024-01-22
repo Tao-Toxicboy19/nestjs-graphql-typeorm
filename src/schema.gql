@@ -3,6 +3,7 @@
 # ------------------------------------------------------
 
 type AuthModel {
+  email: String!
   id: String!
   password: String!
   role: String!
@@ -37,6 +38,7 @@ type Query {
 }
 
 input RegisterDto {
+  email: String!
   password: String!
   role: String!
   username: String!
