@@ -4,7 +4,6 @@ import { Auth } from './entities/auth.entity';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import * as crypto from 'crypto';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
 import { TokenModel } from './models/toke.model';

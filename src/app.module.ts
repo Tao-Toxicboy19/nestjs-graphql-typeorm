@@ -6,6 +6,7 @@ import { join } from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { APP_PIPE } from '@nestjs/core';
 import { AuthModule } from './auth/auth.module';
+import { OtpModule } from './otp/otp.module';
 
 @Module({
   imports: [
@@ -27,7 +28,8 @@ import { AuthModule } from './auth/auth.module';
       logging: true,
     }),
     OrdersModule,
-    AuthModule
+    AuthModule,
+    OtpModule
   ],
   providers: [
     {
