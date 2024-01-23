@@ -68,7 +68,6 @@ export class AuthService {
             const otp = await this.otpService.generateOTP()
             user.otp = otp
             await this.repoUser.save(user)
-
             await this.otpService.sendOTP(user.email, otp)
 
             const token = await this.jwtService.signAsync(payload)

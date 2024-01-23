@@ -8,22 +8,21 @@ export class OtpService {
     ) { }
 
     async generateOTP(): Promise<string> {
-        const otp = Math.floor(1000 + Math.random() * 9000).toString()
-        return otp
+        const otp = Math.floor(1000 + Math.random() * 9000).toString();
+        return otp;
     }
 
     async sendOTP(email: string, otp: string): Promise<void> {
         try {
-            await this.mailerService.sendMail({
+            const mailOptions = {
                 to: email,
-                subject: 'OTP Verification',
-                template: './otp.hbs',
-                context: {
-                    otp: otp,
-                },
-            });
+                subject: 'Test Email',
+                html: `<h1>Your OTP is: ${otp}</h1>`,
+            };
+
+            await this.mailerService.sendMail(mailOptions)
         } catch (error) {
-            throw new Error(error);
+            throw new Error(error)
         }
     }
 }

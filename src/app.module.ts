@@ -18,7 +18,7 @@ import { OtpModule } from './otp/otp.module';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      url: 'postgres://root:12345@localhost:5050/auth', // เปลี่ยนตามการกำหนดค่าของคุณ
+      url: 'postgres://root:12345@localhost:5050/auth',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
       logging: true,
